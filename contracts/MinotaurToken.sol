@@ -44,7 +44,7 @@ contract MinotaurToken is ERC20, Pausable, Ownable {
         return true;
     }
 
-    function startNewROund() public {
+    function startNewRound() public {
         require(block.timestamp + incrementalTime >= lastRoundTime);
         players.push(msg.sender);
     }
