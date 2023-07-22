@@ -12,7 +12,7 @@ abstract contract MinutaurUri is ERC721 {
     string description;
     string imagenUrl;
 
-    constructor(){
+    constructor()ERC721("MinotaurPass", "MNP"){
     }
 
     function _setValues(string memory _name_, string memory _description, string memory _imageUrl) internal {
@@ -49,8 +49,6 @@ abstract contract MinutaurUri is ERC721 {
     }
 
     function _setTokenLastWing(uint256 tokenId, string memory data) internal virtual {
-        require(_exists(tokenId), "Token ID does not exist");
-
         lastWin[tokenId] = data;
     }
  

@@ -6,7 +6,7 @@ import "@openzeppelin/contracts/access/Ownable.sol";
 import "./MinutaurUri.sol";
 
 contract MinotaurPass is  MinutaurUri, Ownable {
-    constructor() ERC721("MinotaurPass", "MNP") {
+    constructor() {
         tokenId = 1;
     }
 
