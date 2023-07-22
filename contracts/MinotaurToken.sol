@@ -11,6 +11,8 @@ contract MinotaurToken is ERC20, Pausable, Ownable {
         minotaurPass = _minotaurPass;
     }
 
+    address[] players;
+
     uint lastRoundTime;
 
     uint256 incrementalTime;
@@ -31,6 +33,7 @@ contract MinotaurToken is ERC20, Pausable, Ownable {
 
         lastRoundTime = block.timestamp;
         minotaurPass.updateUri(to, date);
+        delete players;
         _mint(to, amount);
         
     }
@@ -39,6 +42,11 @@ contract MinotaurToken is ERC20, Pausable, Ownable {
         require(block.timestamp + incrementalTime >= lastRoundTime);
 
         return true;
+    }
+
+    function startNewROund() public {
+        require(block.timestamp + incrementalTime >= lastRoundTime);
+        players.push(msg.sender);
     }
 
     function _beforeTokenTransfer(address from, address to, uint256 amount)
